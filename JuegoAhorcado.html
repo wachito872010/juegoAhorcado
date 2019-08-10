@@ -51,16 +51,16 @@
             var inicioY = 300;
             var lon = 35;
             var margen = 20;
+            var pistaText = "";
+
             /* Arreglos */
             var teclas_array = new Array();
             var letras_array = new Array();
             var palabras_array = new Array();
+
             /* Variables de control */
             var aciertos = 0;
             var errores = 0;
-       
-            var pistaText = "";
-       
             
             /* Palabras */
             palabras_array.push("LEON");
@@ -99,7 +99,8 @@
                 this.dibujaLetra = dibujaLetraLetra;
             }
            
-            
+            /* Funciones */
+
             /* Dibujar Teclas*/
             function dibujaTecla(){
                 ctx.fillStyle = colorTecla;
@@ -214,7 +215,7 @@
                     ctx.drawImage(imagen, 390, 0, 230, 230);
                 }
                 /*************************************************
-                // Imagen 2 mas pequeña a un lado de la horca //
+                // Imagen 2 mas pequeña a un lado de la horca //       
                 var imagen = new Image();
                 imagen.src = "imagenes/ahorcado"+errores+".png";
                 imagen.onload = function(){
@@ -273,12 +274,14 @@
             function gameOver(errores){
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.fillStyle = "black";
+
                 ctx.font = "bold 50px Courier";
                 if (errores < 5){
                     ctx.fillText("Muy bien, la palabra es: ", 110, 280);
                 } else {
                     ctx.fillText("Lo sentimos, la palabra era: ", 110, 280);
                 }
+                
                 ctx.font = "bold 80px Courier";
                 lon = (canvas.width - (palabra.length*48))/2;
                 ctx.fillText(palabra, lon, 380);
